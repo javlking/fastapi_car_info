@@ -1,0 +1,57 @@
+{% include 'headers.html' %}
+{% include 'navbar.html' %}
+
+<div class="container" style="margin-top: 1em;">
+    <form action="/cars/{{ id }}" method="post">
+        <div class="mb-3">
+            <label for="make" class="form-label">Make</label>
+            <input type="text" class="form-control" name="make" id="make" value="{{car['make']}}">
+        </div>
+        <div class="mb-3">
+            <label for="model" class="form-label">Model</label>
+            <input type="text" class="form-control" name="model" id="model" value="{{car['model']}}">
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <input type="number" class="form-control" name="year" id="year" value="{{car['year']}}">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" step="0.01" name="price" id="price" value="{{car['price']}}">
+        </div>
+        <div class="mb-3">
+            <label for="engine" class="form-label">Engine</label>
+            <input type="text" class="form-control" name="engine" placeholder="Engine" id="engine" value="{{car['engine']}}">
+        </div>
+        <div class="mb-3">
+            <label for="autonomous" class="form-label">Autonomous</label>
+            <select class="form-select" name="autonomous" id="autonomous">
+                {% if car['autonomous'] %}
+                    <option selected value="true">Yes</option>
+                    <option value="false">No</option>
+                {% else %}
+                    <option value="true">Yes</option>
+                    <option selected value="false">No</option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="sold" class="form-label">Sold in</label>
+            <div class="form-check">
+                {% for ct in (('Uzbekistan', 'UZ'), ('Russia', 'RU'), ('OAE', 'OAE'), ('Germany', 'GR')) %}
+                    {% if ct in car['sold'] %}
+                        <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="{{ ct[1] }}" checked>{{ct[0]}}<br>
+                    {% else %}
+                        <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="{{ ct[1] }}">{{ct[0]}}<br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+</div>
+
+
+{% include 'footer.html' %}

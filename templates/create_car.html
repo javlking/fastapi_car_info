@@ -1,0 +1,47 @@
+{% include 'headers.html' %}
+{% include 'navbar.html' %}
+
+<div class="container" style="margin-top: 1em;">
+    <form action="/create_car" method="post">
+        <div class="mb-3">
+            <label for="make" class="form-label">Make</label>
+            <input type="text" class="form-control" name="make" id="make">
+        </div>
+        <div class="mb-3">
+            <label for="model" class="form-label">Model</label>
+            <input type="text" class="form-control" name="model" id="model">
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <input type="number" class="form-control" name="year" value=1978 id="year">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" step="0.01" name="price" value=4.0 id="price">
+        </div>
+        <div class="mb-3">
+            <label for="engine" class="form-label">Engine</label>
+            <input type="text" class="form-control" name="engine" placeholder="Engine" id="engine">
+        </div>
+        <div class="mb-3">
+            <label for="autonomous" class="form-label">Autonomous</label>
+            <select class="form-select" name="autonomous" id="autonomous">
+                <option selected value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="sold" class="form-label">Sold in</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="UZ">Uzbekistan<br>
+                <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="RU">Russia<br>
+                <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="OAE">OAE<br>
+                <input type="checkbox" class="form-check-input"  name="sold" id="sold" value="GR">Germany<br>
+            </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+</div>
+{% include 'footer.html' %}
